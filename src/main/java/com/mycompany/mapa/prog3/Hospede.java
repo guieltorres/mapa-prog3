@@ -15,7 +15,6 @@ public class Hospede {
     private String endereco;
     private int idade;
     
-    
      public Hospede(int codigo, String nome, String endereco, int idade) {
         this.setCodigo(codigo);
         this.setNome(nome);
@@ -61,5 +60,4 @@ public class Hospede {
     public String toString() {
         return "Hospede{" + "Código do hóspede=" + codigo + ", nome=" + nome + ", endereco=" + endereco + ", idade=" + idade + '}' +"\n";
     }
-    
 }

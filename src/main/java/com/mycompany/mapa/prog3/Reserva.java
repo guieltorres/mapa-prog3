@@ -11,25 +11,23 @@ import java.util.ArrayList;
  * @author onboarding
  */
 public class Reserva {
+    private int codigo;
+    
     private ArrayList<Hospede> hospedes;
     private Suite suite;
     private int quantidadePessoas;
     private int quantidadeDias;
-
-   
     
     public Reserva(){}
-
+    
     public Reserva(ArrayList<Hospede> hospedes, Suite suite, int quantidadeDias, int quantidadePessoas, int codigo) {
         this.setHospedes(hospedes);
         this.setSuite(suite);
         this.setQuantidadeDias(quantidadeDias);
         this.setQuantidadePessoas(quantidadePessoas);
+        this.setCodigo(codigo);
         
     }
-
-   
-    
 
     public ArrayList<Hospede> getHospedes() {
         return hospedes;
@@ -63,14 +61,18 @@ public class Reserva {
         this.quantidadeDias = quantidadeDias;
     }
     
-    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     @Override
-       public String toString() {
-           return "Reserva{" + "hospedes=" + hospedes + ", suite=" + suite + ", quantidadePessoas=" + quantidadePessoas + ", quantidadeDias=" + quantidadeDias + '}';
-       }
-
-    
+    public String toString() {
+        return "Reserva{" + "código da reserva=" + codigo + ", hospedes=" + hospedes + ", suite=" + suite + ", quantidadePessoas=" + quantidadePessoas + ", quantidadeDias=" + quantidadeDias + '}' + "\n";
+    }
     
     public boolean verificarCapacidade() {
         boolean capacidade = false;
@@ -93,6 +95,5 @@ public class Reserva {
             return valor;
         }
         return valor;
-        
     }
 }

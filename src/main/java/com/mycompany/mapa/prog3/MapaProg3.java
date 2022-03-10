@@ -14,44 +14,59 @@ import java.util.Scanner;
  */
 public class MapaProg3 {
     
+static int opcao = 0;
 static Scanner tec = new Scanner(System.in);
 
     public static void main(String[] args) {
         
-        Reserva r = new Reserva();
-        Hospede h = new Hospede();
-        Suite s = new Suite();
+        
         ArrayList<Reserva> rList = new ArrayList<Reserva>();
-        
-        
-        int opcao = 0;
         
         while (opcao != 9){
             
-            System.out.println("\nSELECIONE A OPÇÃO DESEJADA: \n");
+            Scanner tec2 = new Scanner(System.in);
+            tec2.nextLine();
+            
+            System.out.println("\nSELECIONE A OPÇÃO DESEJADA:\n");
             System.out.println("1 - NOVA RESERVA");
             System.out.println("2 - LISTAR RESERVAS");
-            System.out.println("3 - CALCULAR DIÁRIA DA ÚLTIMA RESERVA");
-            System.out.println("4 - VERIFICAR SE HÁ CAPACIDADE NA ÚLTIMA RESERVA");
+            System.out.println("3 - CALCULAR DIÁRIA");
+            System.out.println("4 - VERIFICAR SE HÁ CAPACIDADE");
+            System.out.println("9 - ENCERRAR PROGRAMA");
             
-            opcao = tec.nextInt();
-            tec.nextLine();
-            
+            try {
+                opcao = tec2.nextInt();
+                tec2.nextLine();
+            } catch (Exception e){
+                System.out.println("Opção inválida");
+            }
             
             switch (opcao){
                 case 1: 
-                    rList.add(Reservar(r));
+                    rList.add(Reservar());
                     break;
                 case 2: 
                     System.out.println(rList);
                     break;
-                case 3: 
-                    int index = rList.size() - 1;
-                    System.out.print(rList.get(index).calcularDiaria());
+                case 3:
+                    System.out.println(rList);
+                    System.out.println("Digite o código da Reserva:");
+                    int index = tec.nextInt();
+                    try {
+                        System.out.print(rList.get(index).calcularDiaria());
+                    } catch (Exception e) {
+                        System.out.println("Código inválido");
+                    }
                     break;
                 case 4: 
-                    index = rList.size() - 1;
-                    System.out.print(rList.get(index).verificarCapacidade());
+                    System.out.println(rList);
+                    System.out.println("Digite o código da Reserva:");
+                    index = tec.nextInt(); 
+                    try{
+                        System.out.print(rList.get(index).verificarCapacidade());
+                    } catch (Exception e){
+                        System.out.println("Código inválido");
+                    }
                     break; 
                 case 9:
                     System.out.println("Programa encerrado.");
@@ -63,12 +78,12 @@ static Scanner tec = new Scanner(System.in);
     static int codigoH = 0;
     static int numeroS = 0;
     static int codigoR = 0;
-    
+    static int userChoice = 1;
         
-    private static Reserva Reservar(Reserva r){
-        Scanner tec = new Scanner(System.in);
+    private static Reserva Reservar(){
         boolean shouldContinue = true;
         ArrayList<Hospede> hList = new ArrayList<Hospede>();
+        Reserva r = new Reserva();
         
         int countIdade = 1;
         
@@ -76,7 +91,6 @@ static Scanner tec = new Scanner(System.in);
         Suite s = new Suite();
         
         System.out.println("Digite o tipo de suíte:");
-        
         String tipo = tec.nextLine();
 
         System.out.println("Digite a capacidade da suíte:");
@@ -84,7 +98,7 @@ static Scanner tec = new Scanner(System.in);
 
         System.out.println("Digite o valor da diária:");
         double valorDiaria = tec.nextDouble();
-        
+         
         s.setNumero(numeroS);
         numeroS++;
         
@@ -121,9 +135,13 @@ static Scanner tec = new Scanner(System.in);
                     hList.remove(index);
                 }
             }
-             
-            System.out.println("Deseja cadastrar outro hóspede? \n1 - Sim / 2 - Não");
-            int userChoice = tec.nextInt();
+            try{ 
+                System.out.println("Deseja cadastrar outro hóspede? \n1 - Sim / 2 - Não");
+                userChoice = tec.nextInt();
+            } catch (Exception e) {
+                userChoice = 2;
+                System.out.println("Opção inválida");
+            }
             
             switch (userChoice) {
                 case 1:
@@ -144,6 +162,8 @@ static Scanner tec = new Scanner(System.in);
         System.out.println("Digite a quantidade de dias");
         int quantidadeDias = tec.nextInt();
         r.setQuantidadeDias(quantidadeDias);
+        r.setCodigo(codigoR);
+        codigoR++;
         
         return r;
     }
