@@ -14,18 +14,14 @@ import java.util.Scanner;
  */
 public class MapaProg3 {
     
-static int opcao = 0;
-static Scanner tec = new Scanner(System.in);
-
     public static void main(String[] args) {
-        
         
         ArrayList<Reserva> rList = new ArrayList<Reserva>();
         
+        int opcao = 0;
+        
         while (opcao != 9){
-            
-            Scanner tec2 = new Scanner(System.in);
-            tec2.nextLine();
+            Scanner tec = new Scanner(System.in);
             
             System.out.println("\nSELECIONE A OPÇÃO DESEJADA:\n");
             System.out.println("1 - NOVA RESERVA");
@@ -34,13 +30,14 @@ static Scanner tec = new Scanner(System.in);
             System.out.println("4 - VERIFICAR SE HÁ CAPACIDADE");
             System.out.println("9 - ENCERRAR PROGRAMA");
             
+            
             try {
-                opcao = tec2.nextInt();
-                tec2.nextLine();
+                opcao = tec.nextInt();
+                tec.nextLine();
             } catch (Exception e){
                 System.out.println("Opção inválida");
             }
-            
+           
             switch (opcao){
                 case 1: 
                     rList.add(Reservar());
@@ -84,6 +81,8 @@ static Scanner tec = new Scanner(System.in);
         boolean shouldContinue = true;
         ArrayList<Hospede> hList = new ArrayList<Hospede>();
         Reserva r = new Reserva();
+        Scanner tec = new Scanner(System.in);
+        
         
         int countIdade = 1;
         
