@@ -15,15 +15,20 @@ public class Reserva {
     private Suite suite;
     private int quantidadePessoas;
     private int quantidadeDias;
+
+   
     
     public Reserva(){}
 
-    public Reserva(ArrayList<Hospede> hospedes, Suite suite, int quantidadeDias, int quantidadePessoas) {
+    public Reserva(ArrayList<Hospede> hospedes, Suite suite, int quantidadeDias, int quantidadePessoas, int codigo) {
         this.setHospedes(hospedes);
         this.setSuite(suite);
         this.setQuantidadeDias(quantidadeDias);
         this.setQuantidadePessoas(quantidadePessoas);
+        
     }
+
+   
     
 
     public ArrayList<Hospede> getHospedes() {
@@ -57,24 +62,29 @@ public class Reserva {
     public void setQuantidadeDias(int quantidadeDias) {
         this.quantidadeDias = quantidadeDias;
     }
+    
+    
 
     @Override
-    public String toString() {
-        return "Reserva{" + "hospedes=" + hospedes + ", suite=" + suite + ", quantidadeDias=" + quantidadeDias + ", quantidadePessoas=" + quantidadePessoas + '}' + "\n";
-    }
+       public String toString() {
+           return "Reserva{" + "hospedes=" + hospedes + ", suite=" + suite + ", quantidadePessoas=" + quantidadePessoas + ", quantidadeDias=" + quantidadeDias + '}';
+       }
+
+    
     
     public boolean verificarCapacidade() {
         boolean capacidade = false;
-        if (suite.getCapacidade()<= quantidadePessoas){
+        if (quantidadePessoas < suite.getCapacidade()){
+            System.out.print(suite.getCapacidade());
             capacidade = true;
-            
         }
         return capacidade;
     }
     
     public double calcularDiaria() {
-        System.out.println(quantidadeDias);
-        System.out.println(suite.getValorDiaria());
+        System.out.println(this.getQuantidadeDias());
+        System.out.println(this.suite.getValorDiaria());
+        
         double valor = quantidadeDias * suite.getValorDiaria();
         
         if (quantidadeDias > 7){

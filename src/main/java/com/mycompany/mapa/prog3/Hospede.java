@@ -59,7 +59,7 @@ public class Hospede {
 
     @Override
     public String toString() {
-        return "Hospede{" + "codigo=" + codigo + ", nome=" + nome + ", endereco=" + endereco + ", idade=" + idade + '}' +"\n";
+        return "Hospede{" + "Código do hóspede=" + codigo + ", nome=" + nome + ", endereco=" + endereco + ", idade=" + idade + '}' +"\n";
     }
     
 }

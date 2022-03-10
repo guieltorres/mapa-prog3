@@ -57,6 +57,6 @@ public class Suite {
 
     @Override
     public String toString() {
-        return "Suite{" + "numero=" + numero + ", tipo=" + tipo + ", capacidade=" + capacidade + ", valorDiaria=" + valorDiaria + '}' + "\n";
+        return "Suite{" + "Número da suíte=" + numero + ", tipo=" + tipo + ", capacidade=" + capacidade + ", valorDiaria=" + valorDiaria + '}' + "\n";
     }
 }
