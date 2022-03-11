@@ -89,6 +89,7 @@ public class MapaProg3 {
 //      Adicionando suite à reserva
         Suite s = new Suite();
         
+       
         System.out.println("Digite o tipo de suíte:");
         String tipo = tec.nextLine();
 
@@ -97,7 +98,7 @@ public class MapaProg3 {
 
         System.out.println("Digite o valor da diária:");
         double valorDiaria = tec.nextDouble();
-         
+        
         s.setNumero(numeroS);
         numeroS++;
         
